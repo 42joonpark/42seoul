@@ -1,7 +1,0 @@
-total 120
--rw-r--r--   1 joonpark  staff    388 Jul 14 10:04 Makefile
--rw-r--r--   1 joonpark  staff    192 Jul 14 10:04 file1
--rw-------   1 joonpark  staff      0 Jul 14 10:05 file2
-drwxr-xr-x   3 joonpark  staff     96 Jul 14 10:04 includes
--rwxr-xr-x   1 joonpark  staff  52696 Jul 14 10:04 pipex
-drwxr-xr-x  10 joonpark  staff    320 Jul 14 10:04 src

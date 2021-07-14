@@ -6,33 +6,15 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:37:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/13 22:12:07 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:40:12 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	init(t_arg *arg, int argc, char *argv[], char *envs[])
-{
-	arg->argc = argc;
-	arg->argv = argv;
-	arg->envs = envs;
-	arg->args = NULL;
-	arg->infile = argv[1];
-	arg->outfile = argv[argc - 1];
-}
-
-void	init_fd(t_fd *fd, int flag, int mode)
-{
-	fd->fd = -1;
-	fd->flag = flag;
-	fd->mode = mode;
-}
-
 void	infile(t_arg *arg, int idx)
 {
 	t_fd	f;
-	char	cmd[BUFFER_SIZE];
 
 	close(arg->a[READ]);
 	init_fd(&f, O_RDONLY, 0);
@@ -46,25 +28,18 @@ void	infile(t_arg *arg, int idx)
 		close(f.fd);
 	}
 	dup2(arg->a[WRITE], STDOUT_FILENO);
-	arg->args = ft_split(arg->argv[idx + 1], ' ');
-	ft_memset(cmd, 0, BUFFER_SIZE);
-	find_executable(arg->argv[idx + 1], arg->envs, cmd, BUFFER_SIZE);
-	cmd[ft_strlen(cmd) - 1] = '\0';
-	execve(cmd, arg->args, arg->envs);
+	exec(arg, idx + 1);
 }
 
 void	outfile(t_arg *arg, int idx)
 {
 	t_fd	f;
 	int		flag;
-	int		mode;
-	char	cmd[BUFFER_SIZE];
 
 	flag = O_WRONLY | O_TRUNC | O_CREAT;
 	if (arg->heredoc)
 		flag = O_WRONLY | O_APPEND | O_CREAT;
-	mode = S_IRUSR | S_IWUSR;
-	init_fd(&f, flag, mode);
+	init_fd(&f, flag, S_IRUSR | S_IWUSR);
 	f.fd = open(arg->outfile, f.flag, f.mode);
 	if (idx % 2 == 0)
 	{
@@ -77,17 +52,11 @@ void	outfile(t_arg *arg, int idx)
 		dup2(arg->b[READ], STDIN_FILENO);
 	}
 	dup2(f.fd, STDOUT_FILENO);
-	arg->args = ft_split(arg->argv[idx], ' ');
-	ft_memset(cmd, 0, BUFFER_SIZE);
-	find_executable(arg->argv[idx], arg->envs, cmd, BUFFER_SIZE);
-	cmd[ft_strlen(cmd) - 1] = '\0';
-	execve(cmd, arg->args, arg->envs);
+	exec(arg, idx);
 }
 
 void	child_process(t_arg *arg, int idx)
 {
-	char	cmd[BUFFER_SIZE];
-
 	if (idx == 1)
 		infile(arg, idx);
 	else if (idx == arg->argc - 2)
@@ -104,11 +73,7 @@ void	child_process(t_arg *arg, int idx)
 			dup2(arg->b[READ], STDIN_FILENO);
 			dup2(arg->a[WRITE], STDOUT_FILENO);
 		}
-		arg->args = ft_split(arg->argv[idx], ' ');
-		ft_memset(cmd, 0, BUFFER_SIZE);
-		find_executable(arg->argv[idx], arg->envs, cmd, BUFFER_SIZE);
-		cmd[ft_strlen(cmd) - 1] = '\0';
-		execve(cmd, arg->args, arg->envs);
+		exec(arg, idx);
 	}
 	exit(EXIT_SUCCESS);
 }
