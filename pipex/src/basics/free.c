@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/13 11:37:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/15 14:41:41 by joonpark         ###   ########.fr       */
+/*   Created: 2021/07/15 11:07:04 by joonpark          #+#    #+#             */
+/*   Updated: 2021/07/15 14:58:52 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char *argv[], char *envs[])
+void	free_args(t_arg *arg)
 {
-	static const char *msg = "usage: ./pipex file1 cmd1 cmd2 file2\n";
-	t_arg	arg;
+	int	idx;
 
-
-	if (argc < 5)
+	if (arg->args)
 	{
-		perror(msg);
-		exit(EXIT_SUCCESS);
+		idx = 0;
+		while (arg->args[idx])
+			free(arg->args[idx++]);
+		if (arg->args)
+		{
+			free(arg->args);
+			arg->args = NULL;
+		}
 	}
-	init(&arg, argc, argv, envs);
-	ft_run(&arg);
+	return ;
 }

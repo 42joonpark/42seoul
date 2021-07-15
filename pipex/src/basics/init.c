@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:11:00 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/14 15:33:27 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/15 14:35:51 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init(t_arg *arg, int argc, char *argv[], char *envs[])
 {
 	arg->argc = argc;
 	arg->argv = argv;
-	arg->envs = envs;
+	arg->envp = envs;
 	arg->args = NULL;
 	arg->infile = argv[1];
 	arg->outfile = argv[argc - 1];

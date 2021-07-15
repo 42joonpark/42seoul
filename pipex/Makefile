@@ -6,7 +6,7 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:11:46 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/14 15:36:39 by joonpark         ###   ########.fr        #
+#    Updated: 2021/07/15 14:32:50 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ INCLUDE = -Iincludes
 NAME = pipex
 
 SRCS = src/main.c \
+	   src/basics/main_functions.c \
 	   src/basics/init.c \
+	   src/basics/fatal.c \
+	   src/basics/free.c \
 	   src/exec/exec.c \
 	   src/exec/exec_which.c \
 	   src/utils/split.c \
