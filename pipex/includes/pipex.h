@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:38:04 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/15 14:34:39 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/15 22:24:20 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct s_arg
 	char	*infile;
 	char	*outfile;
 
-	int		fd;
 	int		heredoc;
 }				t_arg;
 
@@ -91,8 +90,10 @@ void	find_executable(char *command, char *envs[],
 ** ========================
 */
 char	**ft_split(char const *s, char c);
-void	*ft_memset(void *b, int c, size_t len);
 int		ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_memset(void *b, int c, size_t len);
 
 
 

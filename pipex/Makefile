@@ -6,19 +6,19 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:11:46 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/15 14:32:50 by joonpark         ###   ########.fr        #
+#    Updated: 2021/07/15 23:33:17 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 INCLUDE = -Iincludes
 
 NAME = pipex
 
-SRCS = src/main.c \
+SRCS = src/main_bonus.c \
 	   src/basics/main_functions.c \
 	   src/basics/init.c \
 	   src/basics/fatal.c \
@@ -36,7 +36,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $^ -o $@ $(INCLUDE)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBDIR) $(LIBS) $(OPTION)
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	rm -rf $(OBJS)
