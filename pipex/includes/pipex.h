@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:38:04 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/15 22:24:20 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/17 14:30:55 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/wait.h>
+# include "get_next_line.h"
 
 /*
 ** ===========================
@@ -31,8 +32,8 @@
 # define READ 0
 # define WRITE 1
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2048
+# ifndef P_BUFFER_SIZE
+#  define P_BUFFER_SIZE 4096
 # endif
 
 /*
@@ -60,7 +61,9 @@ typedef struct s_arg
 
 	char	*infile;
 	char	*outfile;
+	char	*limeter;
 
+	int		limeter_length;
 	int		heredoc;
 }				t_arg;
 
@@ -93,7 +96,7 @@ char	**ft_split(char const *s, char c);
 int		ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void	*ft_memset(void *b, int c, size_t len);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 
 

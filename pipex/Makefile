@@ -6,7 +6,7 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:11:46 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/15 23:33:17 by joonpark         ###   ########.fr        #
+#    Updated: 2021/07/17 16:42:16 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRCS = src/main_bonus.c \
 	   src/exec/exec.c \
 	   src/exec/exec_which.c \
 	   src/utils/split.c \
-	   src/utils/util.c
+	   src/utils/util.c \
+	   src/utils/get_next_line.c \
+	   src/utils/get_next_line_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

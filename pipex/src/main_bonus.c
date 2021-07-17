@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:37:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/15 23:35:23 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/16 14:29:55 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	move_argv(int *argc, char *argv[], t_arg *arg)
 	--(*argc);
 	argv[*argc] = NULL;
 	arg->heredoc = 1;
+	arg->limeter = argv[1];
+	arg->limeter_length = ft_strlen(argv[1]);
 }
 
 int	main(int argc, char *argv[], char *envs[])
