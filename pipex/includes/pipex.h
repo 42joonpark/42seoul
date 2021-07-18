@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:38:04 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/17 14:30:55 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/17 18:05:58 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/wait.h>
-# include "get_next_line.h"
 
 /*
 ** ===========================
@@ -96,7 +95,10 @@ char	**ft_split(char const *s, char c);
 int		ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_strnstr(const char *big, const char *little, size_t len);
+char	*ft_strchr(char *str, char c);
+char	*ft_strndup(const char *str, int n);
+int		get_line(int fd, char **line);
+void	*ft_memset(void *b, int c, size_t len);
 
 
 

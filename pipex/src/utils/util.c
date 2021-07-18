@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 19:05:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/17 13:56:24 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/17 18:05:44 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	ft_strlen(const char *s)
 	return (ret);
 }
 
-#include <stdio.h>
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	s1_size;
@@ -61,4 +60,36 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if (n == 0)
 		return (0);
 	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
+
+char	*ft_strchr(char *str, char c)
+{
+	int	idx;
+
+	idx = 0;
+	while (str[idx])
+	{
+		if (str[idx] == c)
+			return (str + idx);
+		++idx;
+	}
+	if (str[idx] == c)
+		return(str + idx);
+	return (NULL);
+}
+
+void			*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*cur;
+	size_t			cnt;
+
+	cnt = 0;
+	cur = (unsigned char *)b;
+	while (cnt < len)
+	{
+		*cur = c;
+		++cur;
+		++cnt;
+	}
+	return (b);
 }

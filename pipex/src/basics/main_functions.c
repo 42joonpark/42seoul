@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 10:17:47 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/17 15:25:20 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/18 12:23:23 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,27 @@ static void	handle_heredoc(t_arg *arg)
 	pid = fork();
 	if (pid == 0)
 	{
-		printf("ih...\n");
 		fd = open(".temp", O_RDWR | O_CREAT | O_TRUNC, 0644);
 		write(STDOUT_FILENO, "heredoc> ", 9);
-		while (get_next_line(STDIN_FILENO, &line) != 0)
+		while (get_line(STDIN_FILENO, &line) > 0)
 		{
 			if (ft_strncmp(arg->limeter, line, ft_strlen(line)) == 0)
 				break ;
 			write(STDOUT_FILENO, "heredoc> ", 9);
 			write(fd, line, ft_strlen(line));
 			write(fd, &"\n", 1);
+			free(line);
+			line = NULL;
 		}
 		close(fd);
 		fd = open(".temp", O_RDONLY);
 		dup2(fd, STDIN_FILENO);
 		close(fd);
 		unlink(".temp");
+	}
+	else
+	{
+		wait(NULL);
 	}
 }
 
@@ -48,7 +53,8 @@ static void	infile(t_arg *arg, int idx)
 	init_fd(&f, O_RDONLY, 0);
 	if (arg->heredoc)
 	{
-		handle_heredoc(arg);
+		//handle_heredoc(arg);
+		arg->infile=".temp";
 	}
 	else
 	{
@@ -141,6 +147,9 @@ void	ft_run(t_arg *arg)
 	int		*p;
 	pid_t	pid;
 
+
+	if (arg->heredoc)
+		handle_heredoc(arg);
 	idx = 0;
 	while (++idx < arg->argc - 1)
 	{
