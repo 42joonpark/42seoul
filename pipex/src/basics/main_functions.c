@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 10:17:47 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/18 12:23:23 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/18 13:40:07 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,15 @@ static void	handle_heredoc(t_arg *arg)
 			line = NULL;
 		}
 		close(fd);
-		fd = open(".temp", O_RDONLY);
-		dup2(fd, STDIN_FILENO);
-		close(fd);
-		unlink(".temp");
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
 		wait(NULL);
+		fd = open(".temp", O_RDONLY);
+		dup2(fd, STDIN_FILENO);
+		close(fd);
+		unlink(".temp");
 	}
 }
 
@@ -53,8 +54,7 @@ static void	infile(t_arg *arg, int idx)
 	init_fd(&f, O_RDONLY, 0);
 	if (arg->heredoc)
 	{
-		//handle_heredoc(arg);
-		arg->infile=".temp";
+		handle_heredoc(arg);
 	}
 	else
 	{
@@ -95,7 +95,10 @@ static void	outfile(t_arg *arg, int idx)
 static void	child_process(t_arg *arg, int idx)
 {
 	if (idx == 1)
+	{
 		infile(arg, idx);
+
+	}
 	else if (idx == arg->argc - 2)
 		outfile(arg, idx);
 	else
@@ -112,6 +115,7 @@ static void	child_process(t_arg *arg, int idx)
 		}
 		exec(arg, idx);
 	}
+	perror("child_process\n");
 	exit(EXIT_SUCCESS);
 }
 
@@ -147,12 +151,10 @@ void	ft_run(t_arg *arg)
 	int		*p;
 	pid_t	pid;
 
-
-	if (arg->heredoc)
-		handle_heredoc(arg);
 	idx = 0;
 	while (++idx < arg->argc - 1)
 	{
+		printf("%d\n", idx);
 		p = arg->a;
 		if (idx % 2 == 0)
 			p = arg->b;
