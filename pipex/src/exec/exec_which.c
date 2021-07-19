@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:58:08 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/17 14:31:39 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/19 15:30:11 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	find_cmd(char *argv[], char *envs[], char **args,
 void	find_executable(char *command, char *envs[], char buffer[],
 		int buf_size)
 {
-	static char			*argv[] = {WHICH_DIR, " -a", NULL, NULL};
+	static char			*argv[] = {WHICH_DIR, "-a", NULL, NULL};
 	char				**args;
 	int					pipefd[2];
 	pid_t				pid;

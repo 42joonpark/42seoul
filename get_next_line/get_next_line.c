@@ -6,13 +6,13 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 14:15:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/05/20 19:49:49 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/17 13:33:27 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int				cat_buffer(unsigned char **str, unsigned char buffer[])
+static int	cat_buffer(unsigned char **str, unsigned char buffer[])
 {
 	int				idx_1;
 	int				idx_2;
@@ -41,7 +41,7 @@ static int				cat_buffer(unsigned char **str, unsigned char buffer[])
 	return (0);
 }
 
-static int				make_result(unsigned char **str, char **line,
+static int	make_result(unsigned char **str, char **line,
 							unsigned char *c)
 {
 	unsigned char	*cur;
@@ -62,7 +62,7 @@ static int				make_result(unsigned char **str, char **line,
 	return (0);
 }
 
-static int				free_current(unsigned char *strs[],\
+static int	free_current(unsigned char *strs[],\
 							unsigned char *buf, int fd, int ret)
 {
 	if (buf)
@@ -75,7 +75,7 @@ static int				free_current(unsigned char *strs[],\
 	return (ret);
 }
 
-static int				middle_function(unsigned char *strs[],\
+static int	middle_function(unsigned char *strs[],\
 							unsigned char *buffer, int read_cnt, int fd)
 {
 	buffer[read_cnt] = '\0';
@@ -90,7 +90,7 @@ static int				middle_function(unsigned char *strs[],\
 	return (1);
 }
 
-int						get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static unsigned char	*strs[OPEN_MAX];
 	int						read_cnt;
