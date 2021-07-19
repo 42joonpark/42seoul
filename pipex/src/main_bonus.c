@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:37:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/16 14:29:55 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/19 09:21:05 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	move_argv(int *argc, char *argv[], t_arg *arg)
 
 int	main(int argc, char *argv[], char *envs[])
 {
-	static const char *msg = "usage: ./pipex [here_doc] cmd1 cmd2 file2\n";
-	t_arg	arg;
-	int	res;
+	static const char	*msg = "usage: ./pipex [here_doc] cmd1 cmd2 file2\n";
+	t_arg				arg;
+	int					res;
 
 	if (argc > 1)
 	{

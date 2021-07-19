@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:11:00 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/16 14:30:04 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/19 09:21:27 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ void	init_fd(t_fd *fd, int flag, int mode)
 	fd->flag = flag;
 	fd->mode = mode;
 }
-

@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 17:36:00 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/18 11:16:47 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/19 09:26:41 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,25 @@ static int	get_line2(char **line, char **data)
 
 int	get_line(int fd, char **line)
 {
-	char    *data;
-	char    *buf;
-	char    *tmp;
-	int     bytes;
-	
+	char	*data;
+	char	*buf;
+	char	*tmp;
+	int		bytes;
+
 	buf = (char *) malloc(sizeof(char) * 2);
 	if (buf == NULL)
-	    return (-1);
+		return (-1);
 	data = ft_strndup("", 0);
-	while ((bytes = read(fd, buf, 1) > 0))
+	bytes = read(fd, buf, 1);
+	while (bytes > 0)
 	{
-	    buf[bytes] = '\0';
-	    tmp = data;
-	    data = ft_strjoin(data, buf);
-	    free(tmp);
-	    if (buf[0] == '\n')
-	        break ;
+		buf[bytes] = '\0';
+		tmp = data;
+		data = ft_strjoin(data, buf);
+		free(tmp);
+		if (buf[0] == '\n')
+			break ;
+		bytes = read(fd, buf, 1);
 	}
 	free(buf);
 	return (get_line2(line, &data));

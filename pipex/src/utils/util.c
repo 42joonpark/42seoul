@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 19:05:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/17 18:05:44 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/19 09:27:19 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ char	*ft_strchr(char *str, char c)
 		++idx;
 	}
 	if (str[idx] == c)
-		return(str + idx);
+		return (str + idx);
 	return (NULL);
 }
 
-void			*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*cur;
 	size_t			cnt;

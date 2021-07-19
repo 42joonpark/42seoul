@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:46:10 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/17 14:31:16 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/19 09:24:33 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	exec(t_arg *arg, int idx)
 	ft_memset(cmd, 0, P_BUFFER_SIZE);
 	find_executable(arg->argv[idx], arg->envp, cmd, P_BUFFER_SIZE);
 	cmd[ft_strlen(cmd) - 1] = '\0';
-
 	if (access(cmd, F_OK) < 0)
 		exit_child(arg, "command does not exist.");
 	if (access(cmd, X_OK) < 0)

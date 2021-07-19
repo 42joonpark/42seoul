@@ -6,7 +6,7 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:11:46 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/17 18:06:46 by joonpark         ###   ########.fr        #
+#    Updated: 2021/07/19 14:32:44 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = src/main_bonus.c \
 	   src/basics/init.c \
 	   src/basics/fatal.c \
 	   src/basics/free.c \
+	   src/basics/heredoc.c \
 	   src/exec/exec.c \
 	   src/exec/exec_which.c \
 	   src/utils/split.c \
