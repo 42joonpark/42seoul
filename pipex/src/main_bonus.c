@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:37:51 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/19 09:21:05 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/20 21:31:41 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char *argv[], char *envs[])
 	}
 	if (argc < 5)
 	{
+		errno = EINVAL;
 		perror(msg);
 		exit(EXIT_SUCCESS);
 	}

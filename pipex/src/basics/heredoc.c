@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:27:26 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/19 14:35:21 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/20 21:57:38 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@ static void	helper_func(t_arg *arg)
 	char	*line;
 
 	fd = open(".temp", O_RDWR | O_CREAT | O_TRUNC, 0644);
-	write(STDOUT_FILENO, "heredoc> ", 9);
+	write(STDOUT_FILENO, "pipe heredoc> ", 14);
 	while (get_line(STDIN_FILENO, &line) > 0)
 	{
 		if (ft_strncmp(arg->limeter, line, ft_strlen(arg->limeter)) == 0)
 			break ;
-		write(STDOUT_FILENO, "heredoc> ", 9);
+		write(STDOUT_FILENO, "pipe heredoc> ", 14);
 		write(fd, line, ft_strlen(line));
 		write(fd, &"\n", 1);
 		free(line);
 		line = NULL;
 	}
+	if (line)
+		free(line);
 	close(fd);
 }
 

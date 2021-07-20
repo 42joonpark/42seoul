@@ -6,7 +6,7 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 00:16:11 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/20 20:37:24 by joonpark         ###   ########.fr        #
+#    Updated: 2021/07/20 22:22:30 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,3 +86,8 @@ fclean : clean
 
 re : ment_re fclean all
 	@echo "$(RE_MENT)[make re done.]$(RESET)"
+
+norm_test :
+	@echo "$(MENT)[Norminette test]$(CYAN)"
+	@find ./src -name "*.c" -exec norminette {} \;
+	@find ./includes -name "*.h" -exec norminette {} \;
