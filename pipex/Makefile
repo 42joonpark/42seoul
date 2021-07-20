@@ -6,17 +6,17 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 00:16:11 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/20 15:19:04 by joonpark         ###   ########.fr        #
+#    Updated: 2021/07/20 20:37:24 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC			= gcc
+CC			:= gcc
 
-INC			= -Iincludes
+INC			:= -Iincludes
 LIBS 		= 
-CFLAGS		= -g -Wall -Wextra -Werror
+CFLAGS		:= -g -Wall -Wextra -Werror
 
-SRCS		= src/basics/main_functions.c \
+SRCS		:= src/basics/main_functions.c \
 	   		src/basics/init.c \
 	   		src/basics/fatal.c \
 	   		src/basics/free.c \
@@ -29,31 +29,31 @@ SRCS		= src/basics/main_functions.c \
 	   		src/utils/ft_strndup.c
 OBJS		= $(SRCS:.c=.o)
 
-MAND_SRC	= src/main.c
+MAND_SRC	:= src/main.c
 
 MAND_OBJ	= $(MAND_SRC:.c=.o)
 
-BNS_SRC		= src/main_bonus.c
+BNS_SRC		:= src/main_bonus.c
 
 BNS_OBJ		= $(BNS_SRC:.c=.o)
 
-NAME		= pipex
+NAME		:= pipex
 
 # colors
-RED			= \033[31m
-GREEN 		= \033[32m
-YELLOW 		= \033[33m
-BLUE 		= \033[34m
-MAGENTA		= \033[35m
-CYAN		= \033[36m
-WHITE		= \033[37m
-PINK		= \033[38;5;201m
-OBJS_DOT	= \033[38;5;201m\033[48;5;252m\033[1m\033[3m
-MENT		= \033[38;5;191m\033[1m
-RE_MENT		= \033[38;5;63m\033[1m
-RESET		= \033[0m
+RED			:= \033[31m
+GREEN 		:= \033[32m
+YELLOW 		:= \033[33m
+BLUE 		:= \033[34m
+MAGENTA		:= \033[35m
+CYAN		:= \033[36m
+WHITE		:= \033[37m
+PINK		:= \033[38;5;201m
+OBJS_DOT	:= \033[38;5;201m\033[48;5;252m\033[1m\033[3m
+MENT		:= \033[38;5;191m\033[1m
+RE_MENT		:= \033[38;5;63m\033[1m
+RESET		:= \033[0m
 
-.PHONY		= all ment_re $(NAME) bonus clean fclean re
+.PHONY		:= all ment_re $(NAME) bonus clean fclean re
 
 %.o : %.c
 	@$(CC) -c $(CFLAGS) -o $@ $< $(INC)
