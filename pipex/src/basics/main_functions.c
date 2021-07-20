@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 10:17:47 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/19 20:59:47 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/20 15:47:07 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ static void	child_process(t_arg *arg, int idx)
 	{
 		if (idx % 2 == 0)
 		{
-			dup2(arg->a[READ], STDIN_FILENO);
-			dup2(arg->b[WRITE], STDOUT_FILENO);
+			dup2(arg->b[READ], STDIN_FILENO);
+			dup2(arg->a[WRITE], STDOUT_FILENO);
 		}
 		else
 		{
-			dup2(arg->b[READ], STDIN_FILENO);
-			dup2(arg->a[WRITE], STDOUT_FILENO);
+			dup2(arg->a[READ], STDIN_FILENO);
+			dup2(arg->b[WRITE], STDOUT_FILENO);
 		}
 		exec(arg, idx);
 	}
