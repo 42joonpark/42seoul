@@ -6,12 +6,13 @@
 /*   By: joonpark <joonpark@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 18:13:30 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/09 13:15:55 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:45:09 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+#include <unistd.h>
 static size_t	count_str(char const *s, char c)
 {
 	size_t	count;
@@ -25,7 +26,15 @@ static size_t	count_str(char const *s, char c)
 		{
 			++count;
 			while (*s && *s != c)
+			{
+				if (*s == '\'')
+				{
+					++s;
+					while (*s && *s != '\'')
+						++s;
+				}
 				++s;
+			}
 		}
 	}
 	return (count);
@@ -57,22 +66,24 @@ static char	**make_ret(char const *s, char c)
 	return (ret);
 }
 
-char	**ft_split(char const *s, char c)
+static void	helper(const char *s, const char *cur, char **ret, char c)
 {
-	const char	*cur;
-	char		**ret;
-	size_t		idx;
+	size_t	idx;
 
-	ret = make_ret(s, c);
-	if (!ret)
-		return (NULL);
 	idx = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
 			cur = s;
-			while (*s && *s != c)
+			if (*s && *s == '\'')
+			{
+				++cur;
+				++s;
+				while (*s && *s != '\'')
+					++s;
+			}
+			while (*s && *s != c && *s != '\'')
 				++s;
 			ret[idx] = (char *)malloc(sizeof(char) * (s - cur + 1));
 			ft_strncpy(ret[idx++], cur, (s - cur));
@@ -82,5 +93,16 @@ char	**ft_split(char const *s, char c)
 		++s;
 	}
 	ret[idx] = 0;
+}
+
+char	**ft_split(char const *s, char c)
+{
+	const char	*cur;
+	char		**ret;
+
+	ret = make_ret(s, c);
+	if (!ret)
+		return (NULL);
+	helper(s, cur, ret, c);
 	return (ret);
 }
