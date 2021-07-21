@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 11:29:11 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/21 13:06:49 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/21 13:54:07 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	check_file_type(const char *filepath)
 
 	stat(filepath, &buf);
 	if (S_ISREG(buf.st_mode))
-		return (0);
+		return (REGULAR);
 	else if (S_ISDIR(buf.st_mode))
-		return (1);
+		return (DIRECTORY);
 	else
-		return (-1);
+		return (WRONG_MODE);
 }

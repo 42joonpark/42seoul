@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 10:17:47 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/21 13:06:16 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/21 13:55:36 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static void	parent_process(t_arg *arg, int pid, int idx)
 			close(arg->a[READ]);
 		}
 	}
-	waitpid(pid, &status, 0);
+	waitpid(pid, &status, WNOWAIT);
 }
 
 void	ft_run(t_arg *arg)
