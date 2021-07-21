@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 10:17:47 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/20 15:47:07 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/21 13:06:16 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ static void	outfile(t_arg *arg, int idx)
 	if (arg->heredoc)
 		flag = O_WRONLY | O_APPEND | O_CREAT;
 	init_fd(&f, flag, S_IRUSR | S_IWUSR);
+	if (check_file_type(arg->outfile) == DIRECTORY)
+		exit_child(arg, "zsh: is a directory");
 	f.fd = open(arg->outfile, f.flag, f.mode);
+	if (f.fd < 0)
+		exit_child(arg, "output file open error.");
 	if (idx % 2 == 0)
 	{
 		close(arg->a[WRITE]);

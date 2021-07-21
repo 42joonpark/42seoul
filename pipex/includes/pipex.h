@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 11:38:04 by joonpark          #+#    #+#             */
-/*   Updated: 2021/07/19 14:30:08 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/07/21 11:44:18 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 
 # define READ 0
 # define WRITE 1
+
+# define REGULAR 0
+# define DIRECTORY 1
+# define WRONG_MODE -1
 
 # ifndef P_BUFFER_SIZE
 #  define P_BUFFER_SIZE 4096
@@ -100,4 +104,5 @@ char	*ft_strchr(char *str, char c);
 char	*ft_strndup(const char *str, int n);
 int		get_line(int fd, char **line);
 void	*ft_memset(void *b, int c, size_t len);
+int		check_file_type(const char *filepath);
 #endif

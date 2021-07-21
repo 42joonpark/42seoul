@@ -6,7 +6,7 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 00:16:11 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/20 22:22:30 by joonpark         ###   ########.fr        #
+#    Updated: 2021/07/21 11:46:39 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS		:= src/basics/main_functions.c \
 	   		src/utils/split.c \
 	   		src/utils/util.c \
 	   		src/utils/get_line.c \
-	   		src/utils/ft_strndup.c
+	   		src/utils/ft_strndup.c \
+			src/utils/check_file.c
 OBJS		= $(SRCS:.c=.o)
 
 MAND_SRC	:= src/main.c
