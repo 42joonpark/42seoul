@@ -6,7 +6,7 @@
 #    By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 00:16:11 by joonpark          #+#    #+#              #
-#    Updated: 2021/07/21 11:46:39 by joonpark         ###   ########.fr        #
+#    Updated: 2021/08/04 14:10:06 by joonpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ INC			:= -Iincludes
 LIBS 		= 
 CFLAGS		:= -g -Wall -Wextra -Werror
 
-SRCS		:= src/basics/main_functions.c \
-	   		src/basics/init.c \
+SRCS		:= src/basics/init.c \
 	   		src/basics/fatal.c \
 	   		src/basics/free.c \
 	   		src/basics/heredoc.c \
@@ -30,11 +29,13 @@ SRCS		:= src/basics/main_functions.c \
 			src/utils/check_file.c
 OBJS		= $(SRCS:.c=.o)
 
-MAND_SRC	:= src/main.c
+MAND_SRC	:= src/main.c \
+			src/basics/main_functions.c
 
 MAND_OBJ	= $(MAND_SRC:.c=.o)
 
-BNS_SRC		:= src/main_bonus.c
+BNS_SRC		:= src/main_bonus.c \
+			src/basics/main_functions_bonus.c
 
 BNS_OBJ		= $(BNS_SRC:.c=.o)
 
