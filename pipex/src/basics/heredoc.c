@@ -6,7 +6,7 @@
 /*   By: joonpark <joonpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:27:26 by joonpark          #+#    #+#             */
-/*   Updated: 2021/08/04 13:57:52 by joonpark         ###   ########.fr       */
+/*   Updated: 2021/08/09 09:02:53 by joonpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	helper_func(t_arg *arg)
 	write(STDOUT_FILENO, "pipe heredoc> ", 14);
 	while (get_line(STDIN_FILENO, &line) > 0)
 	{
-		if (ft_strncmp(arg->limeter, line, ft_strlen(arg->limeter)) == 0)
+		if (ft_strncmp(arg->limeter, line, ft_strlen(line)) == 0)
 			break ;
 		write(STDOUT_FILENO, "pipe heredoc> ", 14);
 		write(fd, line, ft_strlen(line));
